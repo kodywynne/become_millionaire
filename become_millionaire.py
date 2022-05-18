@@ -1,5 +1,6 @@
 from ast import And
 from itertools import count
+from typing import final
 
 
 print("Please follow the instructions \nto figure out how much you need \nto save to become a millionaire!\n")
@@ -18,8 +19,13 @@ total_current_savings = int(current_savings) + int(monthly_excess)
 
 counter = 1
 
-while total_current_savings < 1000000:
+final_savings = total_current_savings
+while counter < 1000000:
     counter = counter + 1
-    total_current_savings = total_current_savings + total_current_savings
-years = counter / 12
-print("It will take " + str(counter) + " months, or " + str(years) + " years to become a millionaire") 
+    final_savings = final_savings + total_current_savings
+    if final_savings >= 1000000:
+        years = counter / 12
+        print("It will take " + str(counter) + " months, or " + str(years) + " years to become a millionaire")
+        break
+print(final_savings)
+
